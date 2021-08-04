@@ -1,10 +1,11 @@
 import React from 'react';
 import DietMeal from './DietMeal';
+import './DietPage.css';
 
 const DietPlan = ({mealData}) => {
 
     const nutrients = mealData.nutrients;
-    
+
     return(
         <main>
             <section className="nutrients">

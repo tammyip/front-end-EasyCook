@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DietPlan from './DietPlan';
+import './DietPage.css';
 
 function DietPage() {
 
