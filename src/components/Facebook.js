@@ -20,12 +20,12 @@ const Facebook = () => {
     }
   
     return(
-        <div class="container">
-        <Card style={{ width: '600px' }}>
+      <div>
+        <Card className ="container" style={{ width: '600px' }}>
           <Card.Header>
             { !login && 
               <FacebookLogin
-                appId="562118384400275"
+                appId="573769120411678"
                 autoLoad={true}
                 fields="name,email,picture"
                 scope="public_profile,user_friends"
