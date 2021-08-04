@@ -18,12 +18,19 @@ const Facebook = () => {
         setLogin(false);
       }
     }
+
+    const logout = () => {
+        console.log("trigger logout")
+        setLogin(false);
+        setData({});
+        setPicture('');
+    }
   
     return(
       <div>
         <Card className ="container" style={{ width: '600px' }}>
           <Card.Header>
-            { !login && 
+            { !login &&
               <FacebookLogin
                 appId="573769120411678"
                 autoLoad={true}
@@ -38,7 +45,8 @@ const Facebook = () => {
           </Card.Header>
           { login &&
             <Card.Body>
-              <Card.Title>{data.name}</Card.Title>
+              <Card.Title>Hi, {data.name}!</Card.Title>
+              <button onClick={logout} className="logout_btn"> Logout</button>
               <Card.Text>
                 {data.email}
               </Card.Text>
