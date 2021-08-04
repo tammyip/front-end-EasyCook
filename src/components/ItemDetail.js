@@ -45,9 +45,24 @@ function Item({match}) {
                     ingredient = {ingredient}/>
                 </li>
             ))}</p>
-            <p className="website"> Source:
+            <p className="website"> Cooking Direction:
               <span><a href={item.recipe.url} target="_blank" rel="noreferrer">{item.recipe.url}</a></span>
             </p>
+            <div
+            className="fb-share-button"
+            data-href={item.recipe.url}
+            data-layout="button_count"
+            data-size="large"
+          >
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`https://www.facebook.com/sharer/sharer.php?u=${item.recipe.url}`}
+              className="fb-xfbml-parse-ignore"
+            >
+              Share to Facebook
+            </a>
+          </div>
         </div>
     );
 }
