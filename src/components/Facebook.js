@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import FacebookLogin from 'react-facebook-login';
+// import FacebookLogin from 'react-facebook-login';
 import { Card, Image } from 'react-bootstrap';
+import FacebookLoginWithButton from 'react-facebook-login';
 
 const Facebook = () => {
 
@@ -20,24 +21,35 @@ const Facebook = () => {
     }
 
     const logout = () => {
-        console.log("trigger logout")
         setLogin(false);
         setData({});
         setPicture('');
     }
-  
+
+    const componentClicked = () => console.log('clicked');
+
     return(
       <div>
         <Card className ="container" style={{ width: '600px' }}>
           <Card.Header>
             { !login &&
-              <FacebookLogin
+            //   <FacebookLogin
+            //     appId="573769120411678"
+            //     autoLoad={true}
+            //     fields="name,email,picture"
+            //     scope="public_profile,user_friends"
+            //     onClick = {()=>console.log("clicked")}
+            //     callback={responseFacebook}
+            //     icon="fa-facebook"
+            //     onFailure={console.error} />
+            <FacebookLoginWithButton
                 appId="573769120411678"
                 autoLoad={true}
                 fields="name,email,picture"
-                scope="public_profile,user_friends"
+                onClick={componentClicked}
                 callback={responseFacebook}
-                icon="fa-facebook" />
+                icon="fa-facebook"
+    />
             }
             { login &&
               <Image src={picture} roundedCircle />
@@ -47,9 +59,6 @@ const Facebook = () => {
             <Card.Body>
               <Card.Title>Hi, {data.name}!</Card.Title>
               <button onClick={logout} className="logout_btn"> Logout</button>
-              <Card.Text>
-                {data.email}
-              </Card.Text>
             </Card.Body>
           }
         </Card>
