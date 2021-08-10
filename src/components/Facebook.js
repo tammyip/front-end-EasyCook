@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-// import FacebookLogin from 'react-facebook-login';
 import { Card, Image } from 'react-bootstrap';
+// import FacebookLogin from 'react-facebook-login';
 import FacebookLoginWithButton from 'react-facebook-login';
 
-const Facebook = () => {
+const Facebook = (props) => {
 
     const [login, setLogin] = useState(false);
     const [data, setData] = useState({});
@@ -15,6 +15,9 @@ const Facebook = () => {
       setPicture(response.picture.data.url);
       if (response.accessToken) {
         setLogin(true);
+        // Create a new user in database
+        props.createNewUser(response);
+        console.log("new user created")
       } else {
         setLogin(false);
       }
@@ -26,7 +29,11 @@ const Facebook = () => {
         setPicture('');
     }
 
-    const componentClicked = () => console.log('clicked');
+    const componentClicked = () => {
+        console.log('clicked')
+        // console.log(data)
+        // props.createNewCard(data);
+    };
 
     return(
       <div>

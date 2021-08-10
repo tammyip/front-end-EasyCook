@@ -18,7 +18,7 @@ const App = () => {
 
   // Create a new user
   const createNewUser = (userFieldDict) =>{
-    axios.post(`${process.env.REACT_APP_BACKEND_URL}/users`, userFieldDict)
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/user`, userFieldDict)
       .then((response) =>{
         const newusers = [...users];
         newusers.push(response.data)
@@ -31,7 +31,7 @@ const App = () => {
 
   // Add a new recipe to Favorites
   const addToFavorites = (recipeFieldDict) =>{
-    axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/${user_id}/favorites`, recipeFieldDict)
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/${users.user_id}/favorites`, recipeFieldDict)
       .then((response) =>{
         const newrecipes = [...recipes];
         newrecipes.push(response.data)
@@ -44,7 +44,7 @@ const App = () => {
 
   // Delete a recipe in Favorites
   const deleteFromFavorites = (recipe_id) =>{
-    axios.delete(`${process.env.REACT_APP_BACKEND_URL}/recipes/${recipe_id}`)
+    axios.delete(`${process.env.REACT_APP_BACKEND_URL}/user/${users.user_id}/favorites/${recipe_id}`)
       .then(() =>{
         const allRecipes = [...recipes];
         let i = 0;
@@ -64,7 +64,7 @@ const App = () => {
 
   return(
     <div>
-    <Facebook />
+    <Facebook createNewUser={createNewUser}/>
     <Router>
     <Link to={"/"}><h1>HomePage</h1></Link>
     <Link to={"/diet"}><h1>Diet Plan</h1></Link>
