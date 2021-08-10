@@ -15,10 +15,12 @@ const App = () => {
   const [users, setUsers] = useState([]);
   const [recipes, setRecipes] = useState([]);
   const [errors, setErrors] = useState(null);
+  const [curuser, setcuruser] = useState([]);
 
   // Create a new user
   const createNewUser = (userFieldDict) =>{
-    axios.post(`${process.env.REACT_APP_BACKEND_URL}/user`, userFieldDict)
+    console.log(`${process.env.REACT_APP_BACKEND_URL}/user`)
+    axios.post("http://localhost:5000/user", userFieldDict)
       .then((response) =>{
         const newusers = [...users];
         newusers.push(response.data)
