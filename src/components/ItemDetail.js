@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import SingleIngredient from './SingleIngredient';
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams} from 'react-router-dom';
 
-function Item({match}) {
+function Item(props) {
     const history = useHistory();
 
     // const routeChange = () => {
     //     let path = `/?query=${match.search}`;
     //     history.push(path);
     // }
-
+  console.log(props)
     useEffect(() => {
         fetchItem();
-        console.log(match);
+        // console.log(match);
     }, []);
 
     const [item, setItem] = useState(null);
@@ -21,15 +21,21 @@ function Item({match}) {
         const APP_ID = '1d5e85ae';
         const APP_KEY = '4878708fa2e477084834d032c7e9d5c9';
         const fetchItem = await fetch(
-            `https://api.edamam.com/api/recipes/v2/${match.params.id}?type=public&app_id=${APP_ID}&app_key=${APP_KEY}`
+          // `https://api.edamam.com/api/recipes/v2/${match.params.id}?type=public&app_id=${APP_ID}&app_key=${APP_KEY}`
+            `https://api.edamam.com/api/recipes/v2/${props.match.params.id}?type=public&app_id=${APP_ID}&app_key=${APP_KEY}`
             );
         const item = await fetchItem.json();
         setItem(item);
-        console.log(item);
+        // console.log(item);
     };
 
     if (item === null){
         return null;
+    }
+
+    const addToFavClick = ()  =>{
+        props.addToFavorites(item);
+        console.log("added to db")
     }
 
     return (
@@ -48,6 +54,7 @@ function Item({match}) {
             <p className="website"> Cooking Direction:
               <span><a href={item.recipe.url} target="_blank" rel="noreferrer">{item.recipe.url}</a></span>
             </p>
+            <button onClick={addToFavClick}>Add to Favorites</button>
             <div
             className="fb-share-button"
             data-href={item.recipe.url}

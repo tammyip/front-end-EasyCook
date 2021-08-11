@@ -7,8 +7,6 @@ const Recipe = ({id,title,image}) => {
             <h1>{title}</h1>
             <img src={image} alt=""/>
             <Link to={`/recipe/${id}`}><h1>View Recipe</h1></Link>
-            {/* <button className="recipe_buttons">
-                <Link to={`/recipe/${title}`}>View Recipe </button> </Link> */}
         </div>
     );
 }

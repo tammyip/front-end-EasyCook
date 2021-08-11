@@ -15,7 +15,7 @@ const App = () => {
   const [users, setUsers] = useState([]);
   const [recipes, setRecipes] = useState([]);
   const [errors, setErrors] = useState(null);
-  const [curuser, setcuruser] = useState([]);
+  // const [curUser, setcurUser] = useState([]);
 
   // Create a new user
   const createNewUser = (userFieldDict) =>{
@@ -31,22 +31,10 @@ const App = () => {
       });
   }
 
-  // Add a new recipe to Favorites
-  const addToFavorites = (recipeFieldDict) =>{
-    axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/${users.user_id}/favorites`, recipeFieldDict)
-      .then((response) =>{
-        const newrecipes = [...recipes];
-        newrecipes.push(response.data)
-        setRecipes(newrecipes);
-      })
-      .catch(() => {
-        setErrors("Fail to add a new recipe");
-      });
-  }
-
   // Delete a recipe in Favorites
   const deleteFromFavorites = (recipe_id) =>{
-    axios.delete(`${process.env.REACT_APP_BACKEND_URL}/user/${users.user_id}/favorites/${recipe_id}`)
+    axios.delete(`${process.env.REACT_APP_BACKEND_URL}/favorites/${recipe_id}`)
+    axios.delete(`http://localhost:5000/favorites/${recipe_id}`)
       .then(() =>{
         const allRecipes = [...recipes];
         let i = 0;
@@ -64,21 +52,38 @@ const App = () => {
       });
   }
 
+  // Add a new recipe to Favorites
+  const addToFavorites = (recipeFieldDict) =>{
+    console.log(users)
+    // axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/${users.user_id}/favorites`, recipeFieldDict)
+    axios.post(`http://localhost:5000/user/${users[0].user_id}/favorites`, recipeFieldDict)
+      .then((response) =>{
+        const newrecipes = [...recipes];
+        newrecipes.push(response.data)
+        setRecipes(newrecipes);
+      })
+      .catch(() => {
+        setErrors("Fail to add a new recipe");
+      });
+  }
+
   return(
     <div>
     <Facebook createNewUser={createNewUser}/>
     <Router>
     <Link to={"/"}><h1>HomePage</h1></Link>
-    <Link to={"/diet"}><h1>Diet Plan</h1></Link>
+    <Link to={"/diet"}><h1>Diet Plan</h1></Link> 
+    <Link to={"/:id/favorites"}><h1>Saved Favorites</h1></Link>
     <div>{errors}</div>
     <div className="App">
       <nav>
       <Switch>
         <Route path="/" exact component={SearchPage} />
-        {/* <Route path="/recipe" component={Recipe} /> */}
-        <Route path="/recipe/:id" component={ItemDetail}/>
+        {/* <Route path="/recipe/:id" component={ItemDetail}/> */}
+        <Route path="/recipe/:id" component={(props) => <ItemDetail {...props} addToFavorites={addToFavorites} />}/>
         <Route path="/diet" exact component={DietPage} />
         <Route path="/:id/favorites" component={Favorites} />
+        <Route path="/:id/favorites" component={(props) => <Favorites {...props} deleteFromFavorites={deleteFromFavorites} />}/>
       </Switch>
       </nav>
     </div>
