@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SingleIngredient from './SingleIngredient';
-import { useHistory, useParams} from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 
 function Item(props) {
     const history = useHistory();
@@ -26,7 +26,7 @@ function Item(props) {
             );
         const item = await fetchItem.json();
         setItem(item);
-        // console.log(item);
+        console.log(item);
     };
 
     if (item === null){
@@ -34,7 +34,8 @@ function Item(props) {
     }
 
     const addToFavClick = ()  =>{
-        props.addToFavorites(item);
+      console.log(item)
+        props.addToFavorites(item.recipe);
         console.log("added to db")
     }
 
