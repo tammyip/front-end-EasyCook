@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, Image } from 'react-bootstrap';
 // import FacebookLogin from 'react-facebook-login';
 import FacebookLoginWithButton from 'react-facebook-login';
+import { useHistory } from "react-router-dom";
 
 const Facebook = (props) => {
 
@@ -23,10 +24,14 @@ const Facebook = (props) => {
       }
     }
 
+    const history = useHistory();
+
     const logout = () => {
         setLogin(false);
         setData({});
         setPicture('');
+        let path = '';
+        history.push(path);
     }
 
     const componentClicked = () => {
@@ -58,9 +63,9 @@ const Facebook = (props) => {
                 icon="fa-facebook"
     />
             }
-            { login &&
+            {/* { login &&
               <Image src={picture} roundedCircle />
-            }
+            } */}
           </Card.Header>
           { login &&
             <Card.Body>

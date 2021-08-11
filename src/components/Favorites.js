@@ -2,7 +2,7 @@ import {Link, BrowserRouter} from 'react-router-dom'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Favorites = ({deleteFromFavorites,users}) => {
+const Favorites = ({users}) => {
 
     const [favRecipes, setfavRecipes] = useState([]);
     const [errors, setErrors] = useState(null);
@@ -13,7 +13,10 @@ const Favorites = ({deleteFromFavorites,users}) => {
           .then((response) => {
               console.log("All my saved recipes")
               console.log(response.data)
-              setfavRecipes(response.data);
+              const allRecipes = [...favRecipes]
+              allRecipes.push(response.data)
+              setfavRecipes(response.data.recipes);
+            //   setfavRecipes(response.data);
               console.log(favRecipes)
           })
           .catch(() => {
@@ -21,9 +24,26 @@ const Favorites = ({deleteFromFavorites,users}) => {
           });
       },[]);
     
-    // const deleteClick = ()  =>{
-    //     deleteFromFavorites(id);
-    // }
+// Delete a recipe in Favorites
+    const deleteFromFavorites = (recipe_id) =>{
+    // axios.delete(`${process.env.REACT_APP_BACKEND_URL}/favorites/${recipe_id}`)
+        axios.delete(`http://localhost:5000/favorites/${recipe_id}`)
+        .then(() =>{
+            const allRecipes = [...favRecipes];
+            let i = 0;
+            for (const recipe of allRecipes){
+                if (recipe_id === recipe.recipe_id){
+                    allRecipes.splice(i, 1)
+                    break;
+                }
+                i++;
+        }
+        setfavRecipes(allRecipes);
+      })
+      .catch(() => {
+        setErrors("Fail to delete a recipe");
+      });
+  }
     // return(
     //     <div>
     //         <p>"Hello"</p>
@@ -36,11 +56,15 @@ const Favorites = ({deleteFromFavorites,users}) => {
     if (favRecipes.length > 0){
         return(
             <div>
-                <p>"Hello"</p>
-                <p>{favRecipes[0]["title"]}</p>
-                <p>{favRecipes[0]["image"]}</p>
-                <Link to={favRecipes[0]["url"]}><h1>View Recipe</h1></Link>
-                {/* <button onClick={deleteClick}>DELETE</button> */}
+                {favRecipes.map(favRecipes => (
+                <div>
+                <p>{favRecipes["title"]}</p>
+                <img src={favRecipes["image"]} alt=""/>
+                <p>Cooking Direction: </p>
+                <a href={favRecipes["url"]} target="_blank" rel="noreferrer">{favRecipes["url"]}</a>
+                <button onClick={deleteFromFavorites}>DELETE</button>
+                </div>
+                ))}
             </div>
         );
       } else {

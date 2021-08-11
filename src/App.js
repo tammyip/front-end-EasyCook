@@ -47,27 +47,6 @@ const App = () => {
       });
   }
 
-   // Delete a recipe in Favorites
-   const deleteFromFavorites = (recipe_id) =>{
-    // axios.delete(`${process.env.REACT_APP_BACKEND_URL}/favorites/${recipe_id}`)
-    axios.delete(`http://localhost:5000/favorites/${recipe_id}`)
-      .then(() =>{
-        const allRecipes = [...recipes];
-        let i = 0;
-        for (const recipe of allRecipes){
-          if (recipe_id === recipe.recipe_id){
-            allRecipes.splice(i, 1)
-            break;
-          }
-          i++;
-        }
-        setRecipes(allRecipes);
-      })
-      .catch(() => {
-        setErrors("Fail to delete a recipe");
-      });
-  }
-
     // Show all recipes in an user's Favorites
     // const showFavorites = () => {
     //   console.log(users)
@@ -98,8 +77,8 @@ const App = () => {
         <Route path="/recipe/:id" component={(props) => <ItemDetail {...props} addToFavorites={addToFavorites} />}/>
         <Route path="/diet" exact component={DietPage} />
         {/* <Route path="/:id/favorites" exact component={Fav} /> */}
-        <Route path="/:id/favorites" component={(props) => <Favorites {...props} deleteFromFavorites={deleteFromFavorites} 
-        users = {users}
+        <Route path="/:id/favorites" component={(props) => <Favorites {...props}  
+        users = {users} recipe_id ={recipes.recipe_id}
         />}
         />
       </Switch>
