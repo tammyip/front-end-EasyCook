@@ -1,4 +1,3 @@
-import {Link, BrowserRouter} from 'react-router-dom'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -44,25 +43,16 @@ const Favorites = ({users}) => {
         setErrors("Fail to delete a recipe");
       });
   }
-    // return(
-    //     <div>
-    //         <p>"Hello"</p>
-    //         <p>{recipes[0]["title"]}</p>
-    //         <p>{recipes[0]["image"]}</p>
-    //         <Link to={recipes[0]["url"]}><h1>View Recipe</h1></Link>
-    //         {/* <button onClick={deleteClick}>DELETE</button> */}
-    //     </div>
-    // );
     if (favRecipes.length > 0){
         return(
             <div>
-                {favRecipes.map(favRecipes => (
+                {favRecipes.map(favRecipe => (
                 <div>
-                <p>{favRecipes["title"]}</p>
-                <img src={favRecipes["image"]} alt=""/>
-                <p>Cooking Direction: </p>
-                <a href={favRecipes["url"]} target="_blank" rel="noreferrer">{favRecipes["url"]}</a>
-                <button onClick={deleteFromFavorites}>DELETE</button>
+                <p>{favRecipe["title"]}</p>
+                <img src={favRecipe["image"]} alt=""/>
+                <p>Link to recipe: </p>
+                <a href={favRecipe["url"]} target="_blank" rel="noreferrer">{favRecipe["url"]}</a>
+                <button onClick={()=>deleteFromFavorites(favRecipe["recipe_id"])}>DELETE</button>
                 </div>
                 ))}
             </div>

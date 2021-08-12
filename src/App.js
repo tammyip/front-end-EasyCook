@@ -78,7 +78,7 @@ const App = () => {
         <Route path="/diet" exact component={DietPage} />
         {/* <Route path="/:id/favorites" exact component={Fav} /> */}
         <Route path="/:id/favorites" component={(props) => <Favorites {...props}  
-        users = {users} recipe_id ={recipes.recipe_id}
+        users = {users}
         />}
         />
       </Switch>

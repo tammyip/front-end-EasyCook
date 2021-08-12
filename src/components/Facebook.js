@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Card, Image } from 'react-bootstrap';
 // import FacebookLogin from 'react-facebook-login';
 import FacebookLoginWithButton from 'react-facebook-login';
@@ -24,14 +24,15 @@ const Facebook = (props) => {
       }
     }
 
-    const history = useHistory();
+    // const history = useHistory();
 
     const logout = () => {
         setLogin(false);
         setData({});
         setPicture('');
-        let path = '';
-        history.push(path);
+        window.location.assign("https://localhost:3000");
+        // let path = '';
+        // history.push(path);
     }
 
     const componentClicked = () => {
