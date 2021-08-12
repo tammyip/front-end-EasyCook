@@ -10,6 +10,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom'
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 const App = () => {
   // const BASE_URL = "https://inspiration-board-tashforce.herokuapp.com";
@@ -47,24 +48,11 @@ const App = () => {
       });
   }
 
-    // Show all recipes in an user's Favorites
-    // const showFavorites = () => {
-    //   console.log(users)
-    //   // axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/${users.user_id}/favorites`)
-    //   axios.get(`http://localhost:5000/user/${users[0].user_id}/favorites`)
-    //   .then((response) => {
-    //     const allRecipes = [...recipes];
-    //     allRecipes.push(response.data)
-    //     setRecipes(response.data.recipes);
-    //   })
-    //   .catch(() => {
-    //     setErrors("Fail to show saved recipes");
-    //   });
-    // }
+  const history = useHistory();
 
   return(
     <div>
-    <Facebook createNewUser={createNewUser}/>
+    <Facebook createNewUser={createNewUser} history={history}/>
     <Router>
     <Link to={"/"}><h1>HomePage</h1></Link>
     <Link to={"/diet"}><h1>Diet Plan</h1></Link> 
@@ -78,7 +66,7 @@ const App = () => {
         <Route path="/diet" exact component={DietPage} />
         {/* <Route path="/:id/favorites" exact component={Fav} /> */}
         <Route path="/:id/favorites" component={(props) => <Favorites {...props}  
-        users = {users}
+        users={users}
         />}
         />
       </Switch>

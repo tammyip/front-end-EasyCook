@@ -26,7 +26,7 @@ const Favorites = ({users}) => {
 // Delete a recipe in Favorites
     const deleteFromFavorites = (recipe_id) =>{
     // axios.delete(`${process.env.REACT_APP_BACKEND_URL}/favorites/${recipe_id}`)
-        axios.delete(`http://localhost:5000/favorites/${recipe_id}`)
+        axios.delete(`http://localhost:5000/recipes/${recipe_id}`)
         .then(() =>{
             const allRecipes = [...favRecipes];
             let i = 0;

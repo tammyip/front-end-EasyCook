@@ -30,9 +30,8 @@ const Facebook = (props) => {
         setLogin(false);
         setData({});
         setPicture('');
-        window.location.assign("https://localhost:3000");
-        // let path = '';
-        // history.push(path);
+        // window.location.assign("https://localhost:3000");
+        // props.history.push('');
     }
 
     const componentClicked = () => {
