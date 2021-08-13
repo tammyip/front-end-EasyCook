@@ -1,9 +1,10 @@
 import SearchPage from './components/SearchPage';
-import ItemDetail from './components/ItemDetail';
+import RecipeDetail from './components/RecipeDetail';
 import DietPage from './components/DietPage';
 import Facebook from './components/Facebook';
 import Favorites from './components/Favorites';
-import Fav from './components/Fav';
+import Plans from './components/Plans';
+import PlanDetail from './components/PlanDetail';
 // import Recipe from './components/Recipe';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -21,7 +22,6 @@ const App = () => {
 
   // Create a new user
   const createNewUser = (userFieldDict) =>{
-    console.log(`${process.env.REACT_APP_BACKEND_URL}/user`)
     axios.post("http://localhost:5000/user", userFieldDict)
       .then((response) =>{
         const newusers = [...users];
@@ -35,7 +35,6 @@ const App = () => {
 
   // Add a new recipe to Favorites
   const addToFavorites = (recipeFieldDict) =>{
-    console.log(users)
     // axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/${users.user_id}/favorites`, recipeFieldDict)
     axios.post(`http://localhost:5000/user/${users[0].user_id}/favorites`, recipeFieldDict)
       .then((response) =>{
@@ -57,18 +56,22 @@ const App = () => {
     <Link to={"/"}><h1>HomePage</h1></Link>
     <Link to={"/diet"}><h1>Diet Plan</h1></Link> 
     {users.length > 0 && <Link to={`/${users[0].user_id}/favorites`}><h1>Saved Favorites</h1></Link>}
+    {users.length > 0 && <Link to={`/${users[0].user_id}/plans`}><h1>Meal Plans</h1></Link>}
     <div>{errors}</div>
     <div className="App">
       <Switch>
         <Route path="/" exact component={SearchPage} />
-        {/* <Route path="/recipe/:id" component={ItemDetail}/> */}
-        <Route path="/recipe/:id" component={(props) => <ItemDetail {...props} addToFavorites={addToFavorites} />}/>
+        {/* <Route path="/recipe/:id" component={(props) => <RecipeDetail {...props} users={users} recipes={recipes}/>}/> */}
+        <Route path="/recipe/:id" component={(props) => <RecipeDetail {...props} addToFavorites={addToFavorites}/>}/>
         <Route path="/diet" exact component={DietPage} />
         {/* <Route path="/:id/favorites" exact component={Fav} /> */}
         <Route path="/:id/favorites" component={(props) => <Favorites {...props}  
         users={users}
-        />}
-        />
+        />}/>
+        <Route path="/:id/plans" component={(props) => <Plans {...props}  
+        users={users}
+        />}/>
+        <Route path="/plans/:id/recipes" exact component={PlanDetail} />
       </Switch>
     </div>
     </Router>

@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import SingleIngredient from './SingleIngredient';
 import { useHistory} from 'react-router-dom';
+import axios from 'axios';
 
-function Item(props) {
+function RecipeDetail(props) {
     const history = useHistory();
 
     // const routeChange = () => {
     //     let path = `/?query=${match.search}`;
     //     history.push(path);
     // }
-  console.log(props)
+  // console.log(props)
     useEffect(() => {
         fetchItem();
         // console.log(match);
     }, []);
 
     const [item, setItem] = useState(null);
+    const [recipes, setRecipes] = useState([]);
+    const [errors, setErrors] = useState(null);
 
     const fetchItem = async () =>{
         const APP_ID = '1d5e85ae';
@@ -39,6 +42,20 @@ function Item(props) {
         console.log("added to db")
     }
 
+  // Add a new recipe to Favorites
+  //   const addToFavorites = (recipeFieldDict) =>{
+  //     // axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/${users.user_id}/favorites`, recipeFieldDict)
+  //     axios.post(`http://localhost:5000/user/${props.users[0].user_id}/favorites`, recipeFieldDict)
+  //     .then((response) =>{
+  //       const newrecipes = [...recipes];
+  //       newrecipes.push(response.data)
+  //       setRecipes(newrecipes);
+  //     })
+  //     .catch(() => {
+  //       setErrors("Fail to add a new recipe");
+  //     });
+  // }
+
     return (
         <div>
             <button onClick={history.goBack}>Back</button>
@@ -55,6 +72,7 @@ function Item(props) {
             <p className="website"> Cooking Direction:
               <span><a href={item.recipe.url} target="_blank" rel="noreferrer">{item.recipe.url}</a></span>
             </p>
+            {/* <button onClick={addToFavorites(item.recipe)}>Add to Favorites</button> */}
             <button onClick={addToFavClick}>Add to Favorites</button>
             <div
             className="fb-share-button"
@@ -75,4 +93,4 @@ function Item(props) {
     );
 }
 
-export default Item;
+export default RecipeDetail;
