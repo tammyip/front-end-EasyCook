@@ -3,13 +3,13 @@ import { useState } from 'react';
 const NewPlanForm = (props) => {
 
     const [formFields, setFormFields] = useState({
-        title: ''
+        plan_name: ''
     });
 
     const onTitleChange = (event) => {
         setFormFields({
             ...formFields,
-            title: event.target.value
+            plan_name: event.target.value
         })
     };
 
@@ -21,16 +21,17 @@ const NewPlanForm = (props) => {
     return (
         <form onSubmit={onSubmit}>
             <div>
-                <label htmlFor="title">Plan Title: </label>
+                <label htmlFor="plan_name">Plan Title: </label>
                 <input
-                    name="title"
-                    value={formFields.title}
+                    id = "plan_name"
+                    name="plan_name"
+                    value={formFields.plan_name}
                     onChange={onTitleChange} />
             </div>
             <input className='add_board_btn'
                 type="submit"
                 value="Add Plan"
-                disabled={formFields.title === ''}
+                disabled={formFields.plan_name === ''}
             />
         </form>
     );

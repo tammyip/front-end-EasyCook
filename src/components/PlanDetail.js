@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {useParams} from "react-router-dom";
+// useParams for line 15 to grab the plan_id and the id in route path in app.js
 
-const PlanContent = ({plan_id}) => {
+const PlanContent = () => {
 
     const [favRecipes, setfavRecipes] = useState([]);
     const [plans, setPlans] = useState([]);
     const [errors, setErrors] = useState(null);
+    const { plan_id } = useParams();
 
 // Show all recipes saved in a plan
     useEffect(() => {
@@ -64,14 +67,14 @@ const deletePlan = (plan_id) =>{
       });
     }
 
-    if (plans.length > 0){
+    if (favRecipes.length > 0){
         return(
             <div>
-                <p>My recipes</p>
-                <button onClick={deletePlan(plans["plan_id"])}>DELETE PLAN</button>
+                <h2>My recipes in this meal plan</h2>
+                <button onClick={() => deletePlan(plans["plan_id"])}>DELETE PLAN</button>
                 {favRecipes.map(favRecipe => (
                 <div>
-                <p>{favRecipe["title"]}</p>
+                <h3>{favRecipe["title"]}</h3>
                 <img src={favRecipe["image"]} alt=""/>
                 <p>Link to recipe: </p>
                 <a href={favRecipe["url"]} target="_blank" rel="noreferrer">{favRecipe["url"]}</a>
@@ -81,7 +84,7 @@ const deletePlan = (plan_id) =>{
             </div>
         );
       } else {
-          return "No saved recipe";
+          return "No saved recipe in this meal plan";
       }  
 }
 

@@ -29,11 +29,13 @@ const Plans = ({users}) => {
 
 // Create a new plan
     const createNewPlan = (planFieldDict) =>{
-        axios.post(`${process.env.REACT_APP_BACKEND_URL}/boards`, planFieldDict)
+        axios.post(`http://localhost:5000/user/${users[0].user_id}/plans`, planFieldDict)
         .then((response) =>{
             const newplans = [...plans];
             newplans.push(response.data)
+            console.log(response.data)
             setPlans(newplans);
+            console.log("created a new plan")
         })
         .catch(() => {
             setErrors("Fail to create a new plan");
