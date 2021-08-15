@@ -5,8 +5,8 @@ import Facebook from './components/Facebook';
 import Favorites from './components/Favorites';
 import Plans from './components/Plans';
 import PlanDetail from './components/PlanDetail';
-// import Recipe from './components/Recipe';
-import React, { useState, useEffect } from 'react';
+import NewRecipeForm from './components/NewRecipeForm';
+import React, { useState} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom'
 import './App.css';
@@ -62,16 +62,13 @@ const App = () => {
       <Switch>
         <Route path="/" exact component={SearchPage} />
         {/* <Route path="/recipe/:id" component={(props) => <RecipeDetail {...props} users={users} recipes={recipes}/>}/> */}
-        <Route path="/recipe/:id" component={(props) => <RecipeDetail {...props} addToFavorites={addToFavorites}/>}/>
+        <Route path="/recipe/:id" component={(props) => <RecipeDetail {...props} addToFavorites={addToFavorites} users={users}/>}/>
         <Route path="/diet" exact component={DietPage} />
         {/* <Route path="/:id/favorites" exact component={Fav} /> */}
-        <Route path="/:id/favorites" component={(props) => <Favorites {...props}  
-        users={users}
-        />}/>
-        <Route path="/:id/plans" component={(props) => <Plans {...props}  
-        users={users}
-        />}/>
+        <Route path="/:id/favorites" component={(props) => <Favorites {...props}  users={users}/>}/>
+        <Route path="/:id/plans" component={(props) => <Plans {...props}  users={users}/>}/>
         <Route path="/plans/:plan_id/recipes" exact component={PlanDetail} />
+        <Route path="/:id/addrecipe/:recipe_id" exact component={(props) => <NewRecipeForm {...props}  users={users}/>}/>
       </Switch>
     </div>
     </Router>

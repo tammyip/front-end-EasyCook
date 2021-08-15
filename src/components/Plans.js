@@ -56,20 +56,6 @@ const Plans = ({users}) => {
         newPlan = null;
     }
 
-// Add a recipe to a plan
-    const addToPlan = (recipeFieldDict) =>{
-    // axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/${users.user_id}/favorites`, recipeFieldDict)
-        axios.post(`http://localhost:5000/user/${plans.plan_id}`, recipeFieldDict)
-        .then((response) =>{
-            const newrecipes = [...favRecipes];
-            newrecipes.push(response.data)
-            setfavRecipes(newrecipes);
-        })
-        .catch(() => {
-            setErrors("Fail to add a new recipe");
-        });
-    }
-
     if (plans.length > 0){
         return(
             <div>

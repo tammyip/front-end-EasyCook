@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SingleIngredient from './SingleIngredient';
 import { useHistory} from 'react-router-dom';
-import axios from 'axios';
 
 function RecipeDetail(props) {
     const history = useHistory();
@@ -17,8 +16,6 @@ function RecipeDetail(props) {
     }, []);
 
     const [item, setItem] = useState(null);
-    const [recipes, setRecipes] = useState([]);
-    const [errors, setErrors] = useState(null);
 
     const fetchItem = async () =>{
         const APP_ID = '1d5e85ae';
@@ -37,14 +34,20 @@ function RecipeDetail(props) {
     }
 
     const addToFavClick = ()  =>{
-      console.log(item)
+        console.log(item)
         props.addToFavorites(item.recipe);
         console.log("added to db")
     }
 
+    // let recipe_id=recipe.uri.split('#recipe_').pop()
+    // Redirect to page of adding recipe to a plan
+    const redirect = () =>{
+      history.push(`/${props.users[0].user_id}/addrecipe/${props.match.params.id}`)
+    }
+
   // Add a new recipe to Favorites
   //   const addToFavorites = (recipeFieldDict) =>{
-  //     // axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/${users.user_id}/favorites`, recipeFieldDict)
+  //     // axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/${props.users[0].user_id}/favorites`, recipeFieldDict)
   //     axios.post(`http://localhost:5000/user/${props.users[0].user_id}/favorites`, recipeFieldDict)
   //     .then((response) =>{
   //       const newrecipes = [...recipes];
@@ -74,6 +77,7 @@ function RecipeDetail(props) {
             </p>
             {/* <button onClick={addToFavorites(item.recipe)}>Add to Favorites</button> */}
             <button onClick={addToFavClick}>Add to Favorites</button>
+            <button onClick={redirect}>Add to Plan</button>
             <div
             className="fb-share-button"
             data-href={item.recipe.url}

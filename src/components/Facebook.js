@@ -18,7 +18,7 @@ const Facebook = (props) => {
         setLogin(true);
         // Create a new user in database
         props.createNewUser(response);
-        console.log("new user created")
+        // console.log("new user created")
       } else {
         setLogin(false);
       }
@@ -31,7 +31,7 @@ const Facebook = (props) => {
         setData({});
         setPicture('');
         // window.location.assign("https://localhost:3000");
-        // props.history.push('');
+        props.history.push('/');
     }
 
     const componentClicked = () => {

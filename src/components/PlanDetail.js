@@ -70,15 +70,15 @@ const deletePlan = (plan_id) =>{
     if (favRecipes.length > 0){
         return(
             <div>
-                <h2>My recipes in this meal plan</h2>
+                <h2>{`My recipes in ${plan_id}`}</h2>
                 <button onClick={() => deletePlan(plans["plan_id"])}>DELETE PLAN</button>
                 {favRecipes.map(favRecipe => (
-                <div>
-                <h3>{favRecipe["title"]}</h3>
-                <img src={favRecipe["image"]} alt=""/>
-                <p>Link to recipe: </p>
-                <a href={favRecipe["url"]} target="_blank" rel="noreferrer">{favRecipe["url"]}</a>
-                <button onClick={()=>deleteFromPlan(favRecipe["recipe_id"])}>Delete Recipe</button>
+                    <div>
+                    <h3>{favRecipe["title"]}</h3>
+                    <img src={favRecipe["image"]} alt=""/>
+                    <p>Link to recipe: </p>
+                    <a href={favRecipe["url"]} target="_blank" rel="noreferrer">{favRecipe["url"]}</a>
+                    <button onClick={()=>deleteFromPlan(favRecipe["recipe_id"])}>Delete Recipe</button>
                 </div>
                 ))}
             </div>
