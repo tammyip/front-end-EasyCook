@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SingleIngredient from './SingleIngredient';
 import { useHistory} from 'react-router-dom';
+import axios from 'axios';
 
 function RecipeDetail(props) {
     const history = useHistory();
@@ -15,13 +16,14 @@ function RecipeDetail(props) {
         // console.log(match);
     }, []);
 
+    const [recipes, setRecipes] = useState([]);
     const [item, setItem] = useState(null);
+    const [errors, setErrors] = useState(null);
 
     const fetchItem = async () =>{
         const APP_ID = '1d5e85ae';
         const APP_KEY = '4878708fa2e477084834d032c7e9d5c9';
         const fetchItem = await fetch(
-          // `https://api.edamam.com/api/recipes/v2/${match.params.id}?type=public&app_id=${APP_ID}&app_key=${APP_KEY}`
             `https://api.edamam.com/api/recipes/v2/${props.match.params.id}?type=public&app_id=${APP_ID}&app_key=${APP_KEY}`
             );
         const item = await fetchItem.json();
@@ -33,31 +35,30 @@ function RecipeDetail(props) {
         return null;
     }
 
-    const addToFavClick = ()  =>{
-        console.log(item)
-        props.addToFavorites(item.recipe);
-        console.log("added to db")
-    }
+    // const addToFavClick = ()  =>{
+    //     console.log(item)
+    //     props.addToFavorites(item.recipe);
+    //     console.log("added to db")
+    // }
 
-    // let recipe_id=recipe.uri.split('#recipe_').pop()
-    // Redirect to page of adding recipe to a plan
-    const redirect = () =>{
+    // Add a new recipe to Favorites
+    const addToFavorites = (recipeFieldDict) =>{
+    // axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/${users.user_id}/favorites`, recipeFieldDict)
+        axios.post(`http://localhost:5000/user/${props.users[0].user_id}/favorites`, recipeFieldDict)
+          .then((response) =>{
+          const newrecipes = [...recipes];
+          console.log(newrecipes)
+          newrecipes.push(response.data)
+          setRecipes(newrecipes);
+          console.log("added recipe to favorite")
+        })
+        .catch(() => {
+          setErrors("Fail to add a new recipe");
+        });
+    }
+    const addToPlanRedirect = () =>{
       history.push(`/${props.users[0].user_id}/addrecipe/${props.match.params.id}`)
     }
-
-  // Add a new recipe to Favorites
-  //   const addToFavorites = (recipeFieldDict) =>{
-  //     // axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/${props.users[0].user_id}/favorites`, recipeFieldDict)
-  //     axios.post(`http://localhost:5000/user/${props.users[0].user_id}/favorites`, recipeFieldDict)
-  //     .then((response) =>{
-  //       const newrecipes = [...recipes];
-  //       newrecipes.push(response.data)
-  //       setRecipes(newrecipes);
-  //     })
-  //     .catch(() => {
-  //       setErrors("Fail to add a new recipe");
-  //     });
-  // }
 
     return (
         <div>
@@ -75,9 +76,9 @@ function RecipeDetail(props) {
             <p className="website"> Cooking Direction:
               <span><a href={item.recipe.url} target="_blank" rel="noreferrer">{item.recipe.url}</a></span>
             </p>
-            {/* <button onClick={addToFavorites(item.recipe)}>Add to Favorites</button> */}
-            <button onClick={addToFavClick}>Add to Favorites</button>
-            <button onClick={redirect}>Add to Plan</button>
+            <button onClick={() => addToFavorites(item.recipe)}>Add to Favorites</button>
+            {/* <button onClick={addToFavClick}>Add to Favorites</button> */}
+            <button onClick={addToPlanRedirect}>Add to Plan</button>
             <div
             className="fb-share-button"
             data-href={item.recipe.url}

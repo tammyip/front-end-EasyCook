@@ -18,7 +18,6 @@ function SearchPage () {
     }, [query]);
   
     const getRecipes = async () =>{
-      // axios.get(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`)
       axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`)
       .then((response) =>{
         setRecipes(response.data.hits);

@@ -9,16 +9,15 @@ import NewRecipeForm from './components/NewRecipeForm';
 import React, { useState} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom'
-import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
+import './App.css';
 
 const App = () => {
   // const BASE_URL = "https://inspiration-board-tashforce.herokuapp.com";
   const [users, setUsers] = useState([]);
   const [recipes, setRecipes] = useState([]);
   const [errors, setErrors] = useState(null);
-  // const [curUser, setcurUser] = useState([]);
 
   // Create a new user
   const createNewUser = (userFieldDict) =>{
@@ -34,18 +33,18 @@ const App = () => {
   }
 
   // Add a new recipe to Favorites
-  const addToFavorites = (recipeFieldDict) =>{
-    // axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/${users.user_id}/favorites`, recipeFieldDict)
-    axios.post(`http://localhost:5000/user/${users[0].user_id}/favorites`, recipeFieldDict)
-      .then((response) =>{
-        const newrecipes = [...recipes];
-        newrecipes.push(response.data)
-        setRecipes(newrecipes);
-      })
-      .catch(() => {
-        setErrors("Fail to add a new recipe");
-      });
-  }
+  // const addToFavorites = (recipeFieldDict) =>{
+  //   // axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/${users.user_id}/favorites`, recipeFieldDict)
+  //   axios.post(`http://localhost:5000/user/${users[0].user_id}/favorites`, recipeFieldDict)
+  //     .then((response) =>{
+  //       const newrecipes = [...recipes];
+  //       newrecipes.push(response.data)
+  //       setRecipes(newrecipes);
+  //     })
+  //     .catch(() => {
+  //       setErrors("Fail to add a new recipe");
+  //     });
+  // }
 
   const history = useHistory();
 
@@ -61,11 +60,9 @@ const App = () => {
     <div className="App">
       <Switch>
         <Route path="/" exact component={SearchPage} />
-        {/* <Route path="/recipe/:id" component={(props) => <RecipeDetail {...props} users={users} recipes={recipes}/>}/> */}
-        <Route path="/recipe/:id" component={(props) => <RecipeDetail {...props} addToFavorites={addToFavorites} users={users}/>}/>
+        <Route path="/recipe/:id" component={(props) => <RecipeDetail {...props} users={users}/>}/>
         <Route path="/diet" exact component={DietPage} />
-        {/* <Route path="/:id/favorites" exact component={Fav} /> */}
-        <Route path="/:id/favorites" component={(props) => <Favorites {...props}  users={users}/>}/>
+        <Route path="/:id/favorites" component={(props) => <Favorites {...props} users={users}/>}/>
         <Route path="/:id/plans" component={(props) => <Plans {...props}  users={users}/>}/>
         <Route path="/plans/:plan_id/recipes" exact component={PlanDetail} />
         <Route path="/:id/addrecipe/:recipe_id" exact component={(props) => <NewRecipeForm {...props}  users={users}/>}/>

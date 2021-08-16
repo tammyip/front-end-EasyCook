@@ -60,7 +60,7 @@ const NewRecipeForm = (props) => {
             setErrors("Fail to show recipes in this plan");
         });
     }
-    console.log(selectedPlan)
+
 // Add a recipe to a plan
     const addToPlan = (recipeFieldDict) =>{
     // axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/${plans.plan_id`, recipeFieldDict)
