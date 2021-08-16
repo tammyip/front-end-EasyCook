@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './Favorites.css';
 
 const Favorites = ({users}) => {
 
@@ -47,11 +48,12 @@ const Favorites = ({users}) => {
         return(
             <div>
                 {favRecipes.map(favRecipe => (
-                <div>
+                <div className="favRecipe"> 
                 <p>{favRecipe["title"]}</p>
                 <img src={favRecipe["image"]} alt=""/>
-                <p>Link to recipe: </p>
+                <p>Link to recipe:</p>
                 <a href={favRecipe["url"]} target="_blank" rel="noreferrer">{favRecipe["url"]}</a>
+                <p> </p>
                 <button onClick={()=>deleteFromFavorites(favRecipe["recipe_id"])}>DELETE</button>
                 </div>
                 ))}
