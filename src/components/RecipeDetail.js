@@ -81,7 +81,7 @@ function RecipeDetail(props) {
                 </li>
             ))}</p>
             <p className="website"> Cooking Direction:
-              <span><a href={item.recipe.url} target="_blank" rel="noreferrer">{item.recipe.url}</a></span>
+              <span><a href={item.recipe.url} target="_blank" rel="noreferrer" className="recipe_link">{item.recipe.url}</a></span>
             </p>
             <button onClick={() => addToFavorites(item.recipe)}>Add to Favorites</button>
             {/* <button onClick={addToFavClick}>Add to Favorites</button> */}

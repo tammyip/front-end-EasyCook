@@ -42,7 +42,7 @@ const App = () => {
     <header className="App-header">
       <Router>
       <section className="header">
-        <h1 className="site_name">EasyCook</h1>
+        <h1 className="site_name">&nbsp;&nbsp;🍳EasyCook</h1>
         <Link to={"/"}><h1>Home</h1></Link>
         <Link to={"/diet"}><h1>Diet Plan</h1></Link> 
         {users.length > 0 && <Link to={`/${users[0].user_id}/favorites`}><h1>Favorites</h1></Link>}
@@ -56,7 +56,7 @@ const App = () => {
         <Route path="/" exact component={SearchPage}/>
         <Route path="/recipe/:id" component={(props) => <RecipeDetail {...props} users={users}/>}/>
         <Route path="/diet" exact component={DietPage}/>
-        <Route path="/:id/favorites" component={(props) => <Favorites {...props} users={users} login={login}/>}/>
+        <Route path="/:id/favorites" component={(props) => <Favorites {...props} users={users}/>}/>
         <Route path="/:id/plans" component={(props) => <Plans {...props}  users={users}/>}/>
         <Route path="/plans/:plan_id/recipes" exact component={PlanDetail} />
         <Route path="/:id/addrecipe/:recipe_id" exact component={(props) => <NewRecipeForm {...props}  users={users}/>}/>
@@ -64,6 +64,7 @@ const App = () => {
       </main>
     </Router>
     </header>
+    <footer>This is a footer</footer>
     </div>
   )
 }

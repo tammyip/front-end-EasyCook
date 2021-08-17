@@ -1,19 +1,24 @@
 .App {
   text-align: center;
   /* background-color: rgb(247, 245, 241); */
+  background-image: url("./components/background01.jpeg");
 }
 
 .App-header {
-  background-image: url("./components/background01.jpeg");
+  /* background-image: url("./components/background01.jpeg"); */
   min-height: 100vh;
-  min-width: 190vh;
+  min-width: 220vh;
+  margin: 0px;
+  /* background-repeat: repeat; */
+  /* background-size: cover; */
   /* background-color: cyan; */
 }
 
 .site_name{
   color:brown;
   font-size: 2em;
-  margin: 1em;
+  /* margin: 10px; */
+  /* font-style: italic; */
 }
 
 .header {
@@ -27,7 +32,13 @@
   justify-content: center;
   font-size: 2em;
   color: black;
+  vertical-align: middle;
   /* word-spacing: 10px; */
+}
+
+.mainpic{
+  margin-top: 5em;
+  padding-right: 3em;
 }
 
 .fb-login{
@@ -38,15 +49,23 @@
 
 .fb-name{
   font-size: 0.8em;
-  color: aquamarine;
+  color: rgb(127, 178, 255);
 }
 
 .logout_btn{
   height: 2.3em;
 }
 
+.fb-xfbml-parse-ignore{
+  margin-bottom: 2em;
+}
+
 .App-link {
   color: #61dafb;
 }
+
+/* footer{
+  margin: 1em;
+} */
 
 

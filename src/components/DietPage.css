@@ -131,8 +131,12 @@
     /* background-color: #7f21eb; */
     width: fit-content;
     font-size: 1em;
-    color:blueviolet;
+    color: darkviolet;
     padding: 0.5rem 1rem;
+  }
+
+  .recipe_link {
+    color: red;
   }
 
   .plan {

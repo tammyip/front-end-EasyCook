@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Recipe from './Recipe';
 import { useHistory } from "react-router-dom";
-import { Image } from 'semantic-ui-react';
-import cook from './cook01.jpeg';
+// import { Image } from 'semantic-ui-react';
+import cook from './cook02.jpeg';
 
 function SearchPage () {
 
@@ -13,9 +13,8 @@ function SearchPage () {
     const [recipes, setRecipes] = useState([]);
     const [search, setSearch] = useState('');
     const [query, setQuery] = useState('');
-    const history = useHistory();
-    // const [mainpic, setMainpic] = useState('./cook01.jpeg');
     const [mainpic, setMainpic] = useState(cook);
+    const history = useHistory();
   
     // useEffect(() =>{
     //   getRecipes();
@@ -24,13 +23,8 @@ function SearchPage () {
 
     useEffect(() =>{
       getRecipes();
-      showImage();
-    }, [query, history]);
-
-  //   useEffect(() => {
-  //     setMainpic(mainpic);
-  //     console.log("AAAAAAAAAAAA")
-  // }, [mainpic]);
+      // showImage();
+    }, [query, history, mainpic]);
 
     // getRecipes();
     // const getRecipes = async () =>{
@@ -74,9 +68,10 @@ function SearchPage () {
       setSearch(e.target.value)
     }
 
-    const showImage = () =>{
-      setMainpic(cook)
-    }
+    //don't need this function mainpic is updated using state and your useEffect
+    // const showImage = () =>{
+    //   return (<img src={mainpic} />)
+    // }
 
     const routeChange = () => {
         let path = `/?query=${search}`;
@@ -105,7 +100,8 @@ return (
       <button className="search-button" type="submit">Search</button>
     </form>
     {/* <Image src='https://i.pinimg.com/564x/02/ac/ae/02acaed47cacaa668ba57f18ab86ab80.jpg' alt="upload-image" /> */}
-    {/* {mainpic} */}
+    {/* {showImage} */}
+    <img src={mainpic} className="mainpic" />
     <div className="recipes">
     <section className="favMeals">
     {recipes.map(recipe => (
