@@ -67,7 +67,7 @@ function RecipeDetail(props) {
     }
 
     return (
-        <div>
+        <div className="recipe-detail">
             {/* <button onClick={history.goBack}>Back</button> */}
             {/* <button onClick={backPage}>Back</button> */}
             <h1>{item.recipe.label}</h1>
@@ -98,7 +98,7 @@ function RecipeDetail(props) {
               href={`https://www.facebook.com/sharer/sharer.php?u=${item.recipe.url}`}
               className="fb-xfbml-parse-ignore"
             >
-              Share to Facebook
+              🍔 Share to Facebook 🍔
             </a>
           </div>
         </div>

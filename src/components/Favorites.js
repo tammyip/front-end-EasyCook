@@ -52,7 +52,7 @@ const Favorites = ({users, login}) => {
             <section className="favMeals">
                 {favRecipes.map(favRecipe => (
                 <article className="favRecipe"> 
-                <p>{favRecipe["title"]}</p>
+                <h1>{favRecipe["title"]}</h1>
                 <img src={favRecipe["image"]} alt=""/>
                 {/* <a href={favRecipe["url"]} class="button" target="_blank" rel="noreferrer">Link to recipe</a> */}
                 <button type="button"

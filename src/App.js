@@ -53,9 +53,9 @@ const App = () => {
       <main>
       <Switch>
         <Route path="/" exact render={(props) => <SearchPage {...props}/>}/>
-        <Route path="/" exact component={SearchPage} />
+        <Route path="/" exact component={SearchPage}/>
         <Route path="/recipe/:id" component={(props) => <RecipeDetail {...props} users={users}/>}/>
-        <Route path="/diet" exact component={DietPage} />
+        <Route path="/diet" exact component={DietPage}/>
         <Route path="/:id/favorites" component={(props) => <Favorites {...props} users={users} login={login}/>}/>
         <Route path="/:id/plans" component={(props) => <Plans {...props}  users={users}/>}/>
         <Route path="/plans/:plan_id/recipes" exact component={PlanDetail} />

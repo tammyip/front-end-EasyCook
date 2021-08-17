@@ -1,11 +1,13 @@
 .App {
   text-align: center;
-  background-color: rgb(247, 245, 241);
+  /* background-color: rgb(247, 245, 241); */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App-header {
+  background-image: url("./components/background01.jpeg");
+  min-height: 100vh;
+  min-width: 190vh;
+  /* background-color: cyan; */
 }
 
 .site_name{
@@ -16,6 +18,7 @@
 
 .header {
   background-color: sandybrown;
+  background-image: url("./components/header01.jpeg");
   background-size: auto;
   /* min-height: 100vh; */
   display: flex;

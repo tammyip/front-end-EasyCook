@@ -4,11 +4,10 @@
     padding: 0;
   }
   
-  body {
+  /* body {
     font-family: "Roboto", sans-serif;
-    /* background-color: #f3f3f3; */
     background-color: cornflowerblue;
-  }
+  } */
   
   .App {
     display: flex;
@@ -49,10 +48,10 @@
   }
   
   main {
-    /* margin: 0em auto; */
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: center; */
+    margin: 0em auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     /* max-width: 25em; */
   }
   
@@ -88,7 +87,7 @@
 
   .ingredients{
     margin: auto;
-    width: 50%;
+    width: 80%;
     padding: 10px;
   }
   .ingredients li{
@@ -97,9 +96,10 @@
   }
 
   .one-recipe{
-    max-width: 40%;
+    max-width: 80%;
     height: auto;
   }
+
   img {
     width: 100%;
     margin-bottom: 1rem;
@@ -111,7 +111,8 @@
     padding: 2rem;
     margin: 0 1rem;
     max-width: 300px;
-    box-shadow: 0 4px 8px 2px rgba(77, 77, 77, 0.15);
+    box-shadow: 0 4px 20px 20px rgba(116, 18, 18, 0.15);
+    /* background-color: rgb(225, 224, 224); */
   }
   
   ul {
@@ -136,17 +137,22 @@
 
   .plan {
     font-weight: bold;
+    margin-top: 5em;
   }
 
   .myplan {
-    border: 5px solid red;
+    border: 5px solid darkred;
     border-style: dotted;
     /* max-width: 30em; */
     margin: auto;
-    width: 50%;
+    width: 80%;
     padding: 10px;
     font-weight: bold;
     margin-top: 2em;
+  }
+
+  .recipe-detail{
+    font-weight: bold;
   }
   
   /* a:hover {

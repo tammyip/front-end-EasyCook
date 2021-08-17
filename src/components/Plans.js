@@ -63,12 +63,12 @@ const Plans = ({users}) => {
         return(
             <div>
                 <div className="plan">
-                <h3>✨CREATE A NEW PLAN✨</h3>
+                <h3>🥢CREATE NEW PLAN🥢</h3>
                 {newPlan}
                 <button onClick={toggler}>{buttonText}</button>
                 </div>
                 <div className="myplan">
-                <h3>✨MY PLANS✨</h3>
+                <h3>🍤 MY PLANS 🍤</h3>
                 {plans.map(plan => (
                 <p>
                 {/* <Link to={`/plans/${plan.plan_id}/recipes`} className="btn btn-primary">{plan["plan_name"]}</Link> */}

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Recipe from './Recipe';
 import { useHistory } from "react-router-dom";
+import { Image } from 'semantic-ui-react';
+import cook from './cook01.jpeg';
 
 function SearchPage () {
 
@@ -12,10 +14,24 @@ function SearchPage () {
     const [search, setSearch] = useState('');
     const [query, setQuery] = useState('');
     const history = useHistory();
+    // const [mainpic, setMainpic] = useState('./cook01.jpeg');
+    const [mainpic, setMainpic] = useState(cook);
   
+    // useEffect(() =>{
+    //   getRecipes();
+    //   setMainpic(mainpic);
+    // }, [query, history, mainpic]);
+
     useEffect(() =>{
       getRecipes();
+      showImage();
     }, [query, history]);
+
+  //   useEffect(() => {
+  //     setMainpic(mainpic);
+  //     console.log("AAAAAAAAAAAA")
+  // }, [mainpic]);
+
     // getRecipes();
     // const getRecipes = async () =>{
     //   const cachedHits = localStorage.getItem(query);
@@ -58,6 +74,10 @@ function SearchPage () {
       setSearch(e.target.value)
     }
 
+    const showImage = () =>{
+      setMainpic(cook)
+    }
+
     const routeChange = () => {
         let path = `/?query=${search}`;
         history.push(path);
@@ -70,6 +90,7 @@ function SearchPage () {
       setQuery(search);
       setSearch('');
       routeChange();
+      setMainpic('');
     }
 
     // get the recipe ID
@@ -83,6 +104,8 @@ return (
       <input className="search-bar" type="text" value={search} onChange={updateSearch} />
       <button className="search-button" type="submit">Search</button>
     </form>
+    {/* <Image src='https://i.pinimg.com/564x/02/ac/ae/02acaed47cacaa668ba57f18ab86ab80.jpg' alt="upload-image" /> */}
+    {/* {mainpic} */}
     <div className="recipes">
     <section className="favMeals">
     {recipes.map(recipe => (
