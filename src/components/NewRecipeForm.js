@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {useParams} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const NewRecipeForm = (props) => {
 
@@ -10,12 +11,13 @@ const NewRecipeForm = (props) => {
     const [selectedPlan, setSelectedPlan] = useState(null);
     const [errors, setErrors] = useState(null);
     const { plan_id } = useParams();
+    const history = useHistory();
 
     console.log(props)
 // Displaying all meal plans of an user
     useEffect(() => {
         fetchItem();
-        axios.get(`http://localhost:5000/user/${props.users[0].user_id}/plans`)
+        axios.get(`https://backend2-easycook.herokuapp.com/user/${props.users[0].user_id}/plans`)
           .then((response) => {
             //   console.log(response.data)
               const allPlans = [...plans, ...response.data.plans]
@@ -50,7 +52,7 @@ const NewRecipeForm = (props) => {
     const onClickPlan = (plan) => {
     // update "selected plan"
         setSelectedPlan(plan);
-        axios.get(`http://localhost:5000/plans/${plan.plan_id}/recipes`)
+        axios.get(`https://backend2-easycook.herokuapp.com/plans/${plan.plan_id}/recipes`)
         .then((response) => {
             const allRecipes = [...favRecipes]
             allRecipes.push(response.data)
@@ -64,12 +66,13 @@ const NewRecipeForm = (props) => {
 // Add a recipe to a plan
     const addToPlan = (recipeFieldDict) =>{
     // axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/${plans.plan_id`, recipeFieldDict)
-        axios.post(`http://localhost:5000/plans/${selectedPlan.plan_id}`, recipeFieldDict)
+        axios.post(`https://backend2-easycook.herokuapp.com/plans/${selectedPlan.plan_id}`, recipeFieldDict)
         .then((response) =>{
             const newrecipes = [...favRecipes];
             newrecipes.push(response.data)
             setfavRecipes(newrecipes);
             console.log("added recipe to plan")
+            history.push(`/plans/${selectedPlan.plan_id}/recipes`);
         })
         .catch(() => {
             setErrors("Fail to add a new recipe");
@@ -80,7 +83,7 @@ const NewRecipeForm = (props) => {
         <div>
             <h2>PICK A PLAN</h2>
             {plans.map(plan => (
-                <p key={plan.plan_id} onClick={() => onClickPlan(plan)}>
+                <p key={plan.plan_id} onClick={() => onClickPlan(plan) }>
                 {plan.plan_name}
                 </p>           
                 // <div key={plan.plan_id}>

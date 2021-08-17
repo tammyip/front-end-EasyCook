@@ -15,7 +15,8 @@ import './App.css';
 
 const App = () => {
   // const BASE_URL = "https://inspiration-board-tashforce.herokuapp.com";
-  const BASE_URL = "http://localhost:5000"
+  // const BASE_URL = "http://localhost:5000"
+  const BASE_URL = "https://backend2-easycook.herokuapp.com"
   const [users, setUsers] = useState([]);
   const [login, setLogin] = useState(false);
   const [errors, setErrors] = useState(null);
@@ -41,15 +42,17 @@ const App = () => {
     <header className="App-header">
       <Router>
       <section className="header">
-        <Link to={"/"}><h1>HomePage</h1></Link>
+        <h1 className="site_name">EasyCook</h1>
+        <Link to={"/"}><h1>Home</h1></Link>
         <Link to={"/diet"}><h1>Diet Plan</h1></Link> 
-        {users.length > 0 && <Link to={`/${users[0].user_id}/favorites`}><h1>Saved Favorites</h1></Link>}
+        {users.length > 0 && <Link to={`/${users[0].user_id}/favorites`}><h1>Favorites</h1></Link>}
         {users.length > 0 && <Link to={`/${users[0].user_id}/plans`}><h1>Meal Plans</h1></Link>}
         <Facebook createNewUser={createNewUser} history={history}/>
         </section>
     <div>{errors}</div>
       <main>
       <Switch>
+        <Route path="/" exact render={(props) => <SearchPage {...props}/>}/>
         <Route path="/" exact component={SearchPage} />
         <Route path="/recipe/:id" component={(props) => <RecipeDetail {...props} users={users}/>}/>
         <Route path="/diet" exact component={DietPage} />

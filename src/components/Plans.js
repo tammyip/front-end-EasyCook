@@ -8,11 +8,13 @@ const Plans = ({users}) => {
     const [favRecipes, setfavRecipes] = useState([]);
     const [plans, setPlans] = useState([]);
     const [errors, setErrors] = useState(null);
-    const [toggle, setToggle] = useState(true);
+    const [toggle, setToggle] = useState(false);
+    const user_status = localStorage.getItem('logged in');
 
 // Displaying all meal plans of an user
     useEffect(() => {
-        axios.get(`http://localhost:5000/user/${users[0].user_id}/plans`)
+        if (user_status){
+        axios.get(`https://backend2-easycook.herokuapp.com/user/${users[0].user_id}/plans`)
           .then((response) => {
               console.log("All my saved meal plans")
               console.log(response.data)
@@ -25,11 +27,12 @@ const Plans = ({users}) => {
           .catch(() => {
             setErrors("Fail to show saved meal plans");
           });
+        }
       },[]);
 
 // Create a new plan
     const createNewPlan = (planFieldDict) =>{
-        axios.post(`http://localhost:5000/user/${users[0].user_id}/plans`, planFieldDict)
+        axios.post(`https://backend2-easycook.herokuapp.com/user/${users[0].user_id}/plans`, planFieldDict)
         .then((response) =>{
             const newplans = [...plans];
             newplans.push(response.data)
@@ -56,7 +59,7 @@ const Plans = ({users}) => {
         newPlan = null;
     }
 
-    if (plans.length > 0){
+
         return(
             <div>
                 <div>
@@ -64,16 +67,15 @@ const Plans = ({users}) => {
                 {newPlan}
                 <button onClick={toggler}>{buttonText}</button>
                 </div>
+                <p>Saved Plans</p>
                 {plans.map(plan => (
                 <div>
                 <Link to={`/plans/${plan.plan_id}/recipes`} className="btn btn-primary">{plan["plan_name"]}</Link>
                 </div>
                 ))}
             </div>
-        );
-      } else {
-          return "No saved plan";
+        )
       }  
-}
+
 
 export default Plans;

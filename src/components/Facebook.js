@@ -17,7 +17,9 @@ const Facebook = (props) => {
         setLogin(true);
         // Create a new user in database
         props.createNewUser(response);
-        // console.log("new user created")
+        localStorage.setItem('logged in', 'True');
+        const user_status = localStorage.getItem('logged in');
+        console.log(user_status)
       } else {
         setLogin(false);
       }
@@ -28,6 +30,7 @@ const Facebook = (props) => {
     const logout = () => {
         setLogin(false);
         setData({});
+        localStorage.removeItem('logged in');
         // setPicture('');
         // window.location.assign("https://localhost:3000");
         history.push('/');
@@ -58,8 +61,8 @@ const Facebook = (props) => {
             } */}
        
           { login &&
-              <div>
-              <p>Hi, {data.name}!</p>
+              <div className="fb-login">
+              <p className="fb-name">Hi, {data.name}!</p>
               <button onClick={logout} className="logout_btn"> Logout</button>
               </div>
           }

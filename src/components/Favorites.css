@@ -3,18 +3,19 @@
       flex-direction: column;
       align-items: center;
     }
-  }
+  } */
 
-.favRecipe {
+/* .favRecipe {
     display: flex;
+    border: 1rem;
   }
 
-img {
+.favRecipe img {
     width: 100%;
     margin-bottom: 1rem;
   }
 
-article {
+.favRecipe article {
     display: flex;
     flex-direction: column;
     padding: 2rem;

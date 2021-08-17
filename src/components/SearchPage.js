@@ -11,13 +11,39 @@ function SearchPage () {
     const [recipes, setRecipes] = useState([]);
     const [search, setSearch] = useState('');
     const [query, setQuery] = useState('');
-  
+    const history = useHistory();
   
     useEffect(() =>{
       getRecipes();
-    }, [query]);
-  
+    }, [query, history]);
+    // getRecipes();
+    // const getRecipes = async () =>{
+    //   const cachedHits = localStorage.getItem(query);
+    //   if (cachedHits){
+    //     setRecipes({ hits: JSON.parse(cachedHits) });
+    //   } else {
+    //   axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`)
+    //   .then((response) =>{
+    //     setRecipes(response.data.hits);
+    //     const cachedHits = localStorage.getItem(response.data.hits);
+    //     console.log(cachedHits)
+    //   })
+    //   .catch(() => {
+    //     console.log('error!');
+    //   });
+    //   }
+    // };
+
+  //   useEffect(() =>{
+  //     console.log("AAAAAAAAAAAAAA")
+  //     getRecipes();
+  //  },[]);
+    // console.log("AAAAAAAAAAAAAA")
     const getRecipes = async () =>{
+      if (history.location.state){
+        console.log("I am back")
+        setRecipes(history.location.state);
+      } else {
       axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`)
       .then((response) =>{
         setRecipes(response.data.hits);
@@ -25,13 +51,12 @@ function SearchPage () {
       .catch(() => {
         console.log('error!');
       });
+      }
     };
-  
+
     const updateSearch = e => {
       setSearch(e.target.value)
     }
-  
-    const history = useHistory();
 
     const routeChange = () => {
         let path = `/?query=${search}`;
@@ -59,6 +84,7 @@ return (
       <button className="search-button" type="submit">Search</button>
     </form>
     <div className="recipes">
+    <section className="favMeals">
     {recipes.map(recipe => (
       <Recipe
       key={recipe.recipe.uri}
@@ -67,8 +93,11 @@ return (
     //   id={recipe.recipe.uri.split('#recipe_').pop()}
       id = {extractIdFromUri(recipe.recipe.uri)}
       ingredients={recipe.recipe.ingredients}
+      recipes={recipes}
+      history={history}
       />
     ))}
+    </section>
     </div>
     </div>
   )

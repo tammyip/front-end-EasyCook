@@ -4,7 +4,6 @@ import { useHistory} from 'react-router-dom';
 import axios from 'axios';
 
 function RecipeDetail(props) {
-    const history = useHistory();
 
     // const routeChange = () => {
     //     let path = `/?query=${match.search}`;
@@ -19,6 +18,7 @@ function RecipeDetail(props) {
     const [recipes, setRecipes] = useState([]);
     const [item, setItem] = useState(null);
     const [errors, setErrors] = useState(null);
+    const history = useHistory();
 
     const fetchItem = async () =>{
         const APP_ID = '1d5e85ae';
@@ -44,7 +44,7 @@ function RecipeDetail(props) {
     // Add a new recipe to Favorites
     const addToFavorites = (recipeFieldDict) =>{
     // axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/${users.user_id}/favorites`, recipeFieldDict)
-        axios.post(`http://localhost:5000/user/${props.users[0].user_id}/favorites`, recipeFieldDict)
+        axios.post(`https://backend2-easycook.herokuapp.com/user/${props.users[0].user_id}/favorites`, recipeFieldDict)
           .then((response) =>{
           const newrecipes = [...recipes];
           console.log(newrecipes)
@@ -60,13 +60,20 @@ function RecipeDetail(props) {
       history.push(`/${props.users[0].user_id}/addrecipe/${props.match.params.id}`)
     }
 
+    const backPage= () =>{
+      // localStorage.getItem('cachedHits');
+      history.goBack()
+      fetchItem();
+    }
+
     return (
         <div>
-            <button onClick={history.goBack}>Back</button>
+            {/* <button onClick={history.goBack}>Back</button> */}
+            {/* <button onClick={backPage}>Back</button> */}
             <h1>{item.recipe.label}</h1>
-            <img src={item.recipe.image} alt=""/>
+            <img src={item.recipe.image} alt="" className="one-recipe"/>
             <p>Calories: {Math.round(item.recipe.calories)}</p>
-            <p>{item.recipe.ingredients.map(ingredient =>(
+            <p className="ingredients">{item.recipe.ingredients.map(ingredient =>(
                 <li>
                     <SingleIngredient
                     key={item.recipe.uri} 

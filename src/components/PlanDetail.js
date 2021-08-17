@@ -12,7 +12,7 @@ const PlanContent = () => {
 
 // Show all recipes saved in a plan
     useEffect(() => {
-        axios.get(`http://localhost:5000/plans/${plan_id}/recipes`)
+        axios.get(`https://backend2-easycook.herokuapp.com/plans/${plan_id}/recipes`)
         .then((response) => {
             console.log("All recipes in this plan")
             console.log(response.data)
@@ -28,7 +28,7 @@ const PlanContent = () => {
 // Delete a recipe in a plan
     const deleteFromPlan = (recipe_id) =>{
     // axios.delete(`${process.env.REACT_APP_BACKEND_URL}/recipes/${recipe_id}`)
-        axios.delete(`http://localhost:5000/recipes/${recipe_id}`)
+        axios.delete(`https://backend2-easycook.herokuapp.com/recipes/${recipe_id}`)
         .then(() =>{
             const allRecipes = [...favRecipes];
             let i = 0;
@@ -49,7 +49,7 @@ const PlanContent = () => {
 // Delete a meal plan
 const deletePlan = (plan_id) =>{
     // axios.delete(`${process.env.REACT_APP_BACKEND_URL}/${plan_id}`)
-        axios.delete(`http://localhost:5000/plans/${plan_id}`)
+        axios.delete(`https://backend2-easycook.herokuapp.com/plans/${plan_id}`)
         .then(() =>{
             const allPlans = [...plans];
             let i = 0;
@@ -70,17 +70,25 @@ const deletePlan = (plan_id) =>{
     if (favRecipes.length > 0){
         return(
             <div>
-                <h2>{`My recipes in ${plan_id}`}</h2>
-                <button onClick={() => deletePlan(plans["plan_id"])}>DELETE PLAN</button>
+            <button onClick={() => deletePlan(plans["plan_id"])}>DELETE PLAN</button>
+            <section className="favMeals">
+                {/* <button onClick={() => deletePlan(plans["plan_id"])}>DELETE PLAN</button> */}
+                {/* <h2>{`My recipes in ${plan_id}`}</h2> */}
                 {favRecipes.map(favRecipe => (
-                    <div>
+                    <article className="favRecipe">
                     <h3>{favRecipe["title"]}</h3>
                     <img src={favRecipe["image"]} alt=""/>
-                    <p>Link to recipe: </p>
-                    <a href={favRecipe["url"]} target="_blank" rel="noreferrer">{favRecipe["url"]}</a>
-                    <button onClick={()=>deleteFromPlan(favRecipe["recipe_id"])}>Delete Recipe</button>
-                </div>
+                    {/* <p>Link to recipe: </p> */}
+                    {/* <a href={favRecipe["url"]} target="_blank" rel="noreferrer">{favRecipe["url"]}</a> */}
+                    <button type="button"
+                    onClick={(e) => {
+                    e.preventDefault();
+                    window.open(favRecipe["url"]);
+                    }}> Link to recipe</button>
+                    <button onClick={()=>deleteFromPlan(favRecipe["recipe_id"])}>Delete</button>
+                    </article>
                 ))}
+            </section>
             </div>
         );
       } else {
