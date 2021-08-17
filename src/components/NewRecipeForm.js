@@ -81,7 +81,7 @@ const NewRecipeForm = (props) => {
 
     return(
         <div>
-            <h2>PICK A PLAN</h2>
+            <h3>✨PICK A PLAN✨</h3>
             {plans.map(plan => (
                 <p key={plan.plan_id} onClick={() => onClickPlan(plan) }>
                 {plan.plan_name}
@@ -92,9 +92,11 @@ const NewRecipeForm = (props) => {
                 // <button onClick={()=>addToPlan(item.recipe)}>Add Recipe</button>
                 // </div>
             ))}
-            <h3>SELECTED PLAN</h3>
-            <div>✨{selectedPlan?.plan_name}</div>
+            {/* <h3>SELECTED PLAN</h3> */}
+            <div className="myplan">
+            <div>{selectedPlan?.plan_name}</div>
             <button onClick={()=>addToPlan(item.recipe)}>Add Recipe</button>
+            </div>
         </div>
     );
 }

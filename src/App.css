@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: rgb(247, 245, 241);
 }
 
 .App-logo {
@@ -7,18 +8,11 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .site_name{
   color:brown;
   font-size: 2em;
   margin: 1em;
 }
-
 
 .header {
   background-color: sandybrown;
@@ -43,7 +37,6 @@
   font-size: 0.8em;
   color: aquamarine;
 }
-
 
 .logout_btn{
   height: 2.3em;

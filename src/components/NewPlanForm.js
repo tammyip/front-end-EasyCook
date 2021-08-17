@@ -21,7 +21,7 @@ const NewPlanForm = (props) => {
     return (
         <form onSubmit={onSubmit}>
             <div>
-                <label htmlFor="plan_name">Plan Title: </label>
+                <label htmlFor="plan_name">Plan Title:&nbsp;</label>
                 <input
                     id = "plan_name"
                     name="plan_name"

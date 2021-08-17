@@ -6,7 +6,8 @@
   
   body {
     font-family: "Roboto", sans-serif;
-    background-color: #f3f3f3;
+    /* background-color: #f3f3f3; */
+    background-color: cornflowerblue;
   }
   
   .App {
@@ -127,11 +128,25 @@
   a {
     text-decoration: none;
     /* background-color: #7f21eb; */
-    color: black;
     width: fit-content;
     font-size: 1em;
     color:blueviolet;
     padding: 0.5rem 1rem;
+  }
+
+  .plan {
+    font-weight: bold;
+  }
+
+  .myplan {
+    border: 5px solid red;
+    border-style: dotted;
+    /* max-width: 30em; */
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    font-weight: bold;
+    margin-top: 2em;
   }
   
   /* a:hover {

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Favorites.css';
 import {Link} from 'react-router-dom'
 
 const Favorites = ({users, login}) => {

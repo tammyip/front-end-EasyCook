@@ -62,18 +62,22 @@ const Plans = ({users}) => {
 
         return(
             <div>
-                <div>
-                <p>CREATE A NEW PLAN</p>
+                <div className="plan">
+                <h3>✨CREATE A NEW PLAN✨</h3>
                 {newPlan}
                 <button onClick={toggler}>{buttonText}</button>
                 </div>
-                <p>Saved Plans</p>
+                <div className="myplan">
+                <h3>✨MY PLANS✨</h3>
                 {plans.map(plan => (
-                <div>
-                <Link to={`/plans/${plan.plan_id}/recipes`} className="btn btn-primary">{plan["plan_name"]}</Link>
-                </div>
+                <p>
+                {/* <Link to={`/plans/${plan.plan_id}/recipes`} className="btn btn-primary">{plan["plan_name"]}</Link> */}
+                {/* <Link to={`/plans/${plan.plan_id}/recipes`}>{plan["plan_name"]}</Link> */}
+                 <a href={`/plans/${plan.plan_id}/recipes`}>{plan["plan_name"]}</a>
+                </p>
                 ))}
-            </div>
+                </div>
+            </div> 
         )
       }  
 
