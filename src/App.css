@@ -1,29 +1,22 @@
 .App {
   text-align: center;
   /* background-color: rgb(247, 245, 241); */
-  background-image: url("./components/background01.jpeg");
+  background-image: url("./images/background01.jpeg");
 }
 
 .App-header {
   /* background-image: url("./components/background01.jpeg"); */
   min-height: 100vh;
-  min-width: 220vh;
+  width: 100%;
   margin: 0px;
   /* background-repeat: repeat; */
   /* background-size: cover; */
   /* background-color: cyan; */
 }
 
-.site_name{
-  color:brown;
-  font-size: 2em;
-  /* margin: 10px; */
-  /* font-style: italic; */
-}
-
-.header {
+.head_nav_bar {
   background-color: sandybrown;
-  background-image: url("./components/header01.jpeg");
+  background-image: url("./images/header01.jpeg");
   background-size: auto;
   /* min-height: 100vh; */
   display: flex;
@@ -33,6 +26,9 @@
   font-size: 2em;
   color: black;
   vertical-align: middle;
+  /* padding: 5px; */
+  padding-top: 5px;
+  padding-left: 1em;
   /* word-spacing: 10px; */
 }
 
@@ -45,6 +41,7 @@
   display: flex;
   flex-direction: row;
   align-items: center; /* align vertical */
+  margin-left: auto;
 }
 
 .fb-name{
@@ -54,18 +51,28 @@
 
 .logout_btn{
   height: 2.3em;
+  /* padding-bottom: 2em; */
+  margin-top: -0.5em;
 }
 
-.fb-xfbml-parse-ignore{
+.fb_share {
   margin-bottom: 2em;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 /* footer{
   margin: 1em;
 } */
+
+.head_nav_bar .container{
+  margin-left: auto;
+}
+
+.site_name{
+  color:brown;
+  font-size: 2em;
+  padding-top: 2px;
+  /* margin: 10px; */
+  /* font-style: italic; */
+}
 
 

@@ -62,7 +62,7 @@ const Facebook = (props) => {
        
           { login &&
               <div className="fb-login">
-              <p className="fb-name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hi, {data.name}!</p>
+              <p className="fb-name">Hi, {data.name}!</p>
               <button onClick={logout} className="logout_btn"> Logout</button>
               </div>
           }

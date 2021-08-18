@@ -136,7 +136,12 @@
   }
 
   .recipe_link {
-    color: red;
+    color: black;
+  }
+
+  .plan_form {
+    font-size: 18px;
+    font-weight: bold;
   }
 
   .plan {

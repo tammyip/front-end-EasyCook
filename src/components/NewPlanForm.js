@@ -20,7 +20,7 @@ const NewPlanForm = (props) => {
 
     return (
         <form onSubmit={onSubmit}>
-            <div>
+            <div className="plan_form">
                 <label htmlFor="plan_name">Plan Title:&nbsp;</label>
                 <input
                     id = "plan_name"

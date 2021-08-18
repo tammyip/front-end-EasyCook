@@ -53,12 +53,11 @@ const Plans = ({users}) => {
     const buttonText = toggle === true ? "Hide New Plan Form" : "Show New Plan Form";
 
     let newPlan;
-    if (toggle) {
+    if (toggle && user_status) {
         newPlan = <NewPlanForm setPlans={setPlans} createNewPlan={createNewPlan}/>
     } else{
         newPlan = null;
     }
-
 
         return(
             <div>

@@ -41,8 +41,8 @@ const App = () => {
     <div className="App">
     <header className="App-header">
       <Router>
-      <section className="header">
-        <h1 className="site_name">&nbsp;&nbsp;🍳EasyCook</h1>
+      <section className="head_nav_bar">
+        <h1 className="site_name">🍳EasyCook</h1>
         <Link to={"/"}><h1>Home</h1></Link>
         <Link to={"/diet"}><h1>Diet Plan</h1></Link> 
         {users.length > 0 && <Link to={`/${users[0].user_id}/favorites`}><h1>Favorites</h1></Link>}
@@ -64,7 +64,7 @@ const App = () => {
       </main>
     </Router>
     </header>
-    <footer>This is a footer</footer>
+    <footer>&nbsp;&nbsp;</footer>
     </div>
   )
 }
