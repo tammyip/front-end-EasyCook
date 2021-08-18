@@ -131,7 +131,7 @@
     /* background-color: #7f21eb; */
     width: fit-content;
     font-size: 1em;
-    color: darkviolet;
+    color: darkorange;
     padding: 0.5rem 1rem;
   }
 
@@ -142,11 +142,19 @@
   .plan_form {
     font-size: 18px;
     font-weight: bold;
+    color:  rgb(127, 178, 255);
   }
 
   .plan {
     font-weight: bold;
     margin-top: 5em;
+  }
+
+  .pick_plan_name {
+    color: black;
+    font-weight: bold;
+    background-color: greenyellow;
+    /* background-color: rgb(235, 173, 149); */
   }
 
   .myplan {
@@ -158,6 +166,10 @@
     padding: 10px;
     font-weight: bold;
     margin-top: 2em;
+  }
+
+  .plan_link {
+    color: blue;
   }
 
   .recipe-detail{

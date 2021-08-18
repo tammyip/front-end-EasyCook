@@ -57,9 +57,10 @@ const App = () => {
         <Route path="/recipe/:id" component={(props) => <RecipeDetail {...props} users={users}/>}/>
         <Route path="/diet" exact component={DietPage}/>
         <Route path="/:id/favorites" component={(props) => <Favorites {...props} users={users}/>}/>
-        <Route path="/:id/plans" component={(props) => <Plans {...props}  users={users}/>}/>
-        <Route path="/plans/:plan_id/recipes" exact component={PlanDetail} />
-        <Route path="/:id/addrecipe/:recipe_id" exact component={(props) => <NewRecipeForm {...props}  users={users}/>}/>
+        <Route path="/:id/plans" component={(props) => <Plans {...props} users={users}/>}/>
+        {/* <Route path="/plans/:plan_id/recipes" exact component={PlanDetail}/> */}
+        <Route path="/plans/:plan_id/recipes" exact component={(props) => <PlanDetail {...props} users={users}/>}/>
+        <Route path="/:id/addrecipe/:recipe_id" exact component={(props) => <NewRecipeForm {...props} users={users}/>}/>
       </Switch>
       </main>
     </Router>

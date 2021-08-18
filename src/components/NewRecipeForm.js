@@ -83,7 +83,7 @@ const NewRecipeForm = (props) => {
         <div>
             <h3>✨PICK A PLAN✨</h3>
             {plans.map(plan => (
-                <p key={plan.plan_id} onClick={() => onClickPlan(plan) }>
+                <p className="pick_plan_name" key={plan.plan_id} onClick={() => onClickPlan(plan) }>
                 {plan.plan_name}
                 </p>           
                 // <div key={plan.plan_id}>

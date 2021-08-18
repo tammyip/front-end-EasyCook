@@ -72,7 +72,7 @@ const Plans = ({users}) => {
                 <p>
                 {/* <Link to={`/plans/${plan.plan_id}/recipes`} className="btn btn-primary">{plan["plan_name"]}</Link> */}
                 {/* <Link to={`/plans/${plan.plan_id}/recipes`}>{plan["plan_name"]}</Link> */}
-                 <a href={`/plans/${plan.plan_id}/recipes`}>{plan["plan_name"]}</a>
+                 <a className="plan_link" href={`/plans/${plan.plan_id}/recipes`}>{plan["plan_name"]}</a>
                 </p>
                 ))}
                 </div>

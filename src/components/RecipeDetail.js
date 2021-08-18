@@ -18,6 +18,7 @@ function RecipeDetail(props) {
     const [recipes, setRecipes] = useState([]);
     const [item, setItem] = useState(null);
     const [errors, setErrors] = useState(null);
+    const user_status = localStorage.getItem('logged in');
     const history = useHistory();
 
     const fetchItem = async () =>{
@@ -43,6 +44,7 @@ function RecipeDetail(props) {
 
     // Add a new recipe to Favorites
     const addToFavorites = (recipeFieldDict) =>{
+      if (user_status){
     // axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/${users.user_id}/favorites`, recipeFieldDict)
         axios.post(`https://backend2-easycook.herokuapp.com/user/${props.users[0].user_id}/favorites`, recipeFieldDict)
           .then((response) =>{
@@ -50,15 +52,23 @@ function RecipeDetail(props) {
           console.log(newrecipes)
           newrecipes.push(response.data)
           setRecipes(newrecipes);
-          console.log("added recipe to favorite")
+          // console.log("added recipe to favorite")
+          alert('🥑 Added to Favorite! 🥑')
         })
         .catch(() => {
           setErrors("Fail to add a new recipe");
         });
+        } else {
+          alert("💡 Please log in 💡")
+        }
     }
     const addToPlanRedirect = () =>{
-      history.push(`/${props.users[0].user_id}/addrecipe/${props.match.params.id}`)
+      if (user_status){
+        history.push(`/${props.users[0].user_id}/addrecipe/${props.match.params.id}`)
+      } else {
+        alert("💡 Please log in 💡")
     }
+  } 
 
     const backPage= () =>{
       // localStorage.getItem('cachedHits');
@@ -80,7 +90,7 @@ function RecipeDetail(props) {
                     ingredient = {ingredient}/>
                 </li>
             ))}</p>
-            <p className="website"> Cooking Direction:
+            <p className="website"> 🌟 Cooking Direction:
               <span><a href={item.recipe.url} target="_blank" rel="noreferrer" className="recipe_link">{item.recipe.url}</a></span>
             </p>
             <button onClick={() => addToFavorites(item.recipe)}>Add to Favorites</button>
