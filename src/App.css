@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   /* background-color: rgb(247, 245, 241); */
-  background-image: url("./images/background01.jpeg");
+  background-image: url("./images/background01.jpg");
 }
 
 .App-header {
@@ -16,7 +16,7 @@
 
 .head_nav_bar {
   background-color: sandybrown;
-  background-image: url("./images/header01.jpeg");
+  background-image: url("./images/header01.jpg");
   background-size: auto;
   /* min-height: 100vh; */
   display: flex;
