@@ -3,7 +3,7 @@ import axios from 'axios';
 import Recipe from './Recipe';
 import { useHistory } from "react-router-dom";
 // import { Image } from 'semantic-ui-react';
-import cook from '../images/cook02.jpeg';
+import cook from '../images/cook02.jpg';
 
 function SearchPage () {
 
