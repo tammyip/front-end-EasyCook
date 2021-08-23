@@ -1,3 +1,9 @@
+# Project Description
+This web application lets an user search for recipes and make a daily meal plan based on the user's target calories. After logging in with Facebook, an user can also save and remove a recipe to favorites. The user can also create meal plans for special occasions and add recipes to the plans. 
+
+### Deployed version on AWS Amplify
+https://master.d245vfkxehebea.amplifyapp.com/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +74,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
