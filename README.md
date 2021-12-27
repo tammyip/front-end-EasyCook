@@ -6,6 +6,7 @@ https://master.d245vfkxehebea.amplifyapp.com/
 
 ### Github Repo's
 Frontend: https://github.com/tammyip/front-end-EasyCook/tree/master
+
 Backend: https://github.com/tammyip/back-end-EasyCook/tree/main
 
 ### Setup
