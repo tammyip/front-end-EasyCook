@@ -13,13 +13,9 @@ const Favorites = ({users}) => {
         if (user_status){
         axios.get(`https://backend2-easycook.herokuapp.com/user/${users[0].user_id}/favorites`)
           .then((response) => {
-              console.log("All my saved recipes")
-              console.log(response.data)
               const allRecipes = [...favRecipes]
               allRecipes.push(response.data)
               setfavRecipes(response.data.recipes);
-            //   setfavRecipes(response.data);
-              console.log(favRecipes)
           })
           .catch(() => {
             setErrors("Fail to show saved recipes");
@@ -29,7 +25,6 @@ const Favorites = ({users}) => {
     
 // Delete a recipe in Favorites
     const deleteFromFavorites = (recipe_id) =>{
-    // axios.delete(`${process.env.REACT_APP_BACKEND_URL}/favorites/${recipe_id}`)
         axios.delete(`https://backend2-easycook.herokuapp.com/recipes/${recipe_id}`)
         .then(() =>{
             const allRecipes = [...favRecipes];
@@ -54,7 +49,6 @@ const Favorites = ({users}) => {
                 <article className="favRecipe"> 
                 <h1>{favRecipe["title"]}</h1>
                 <img src={favRecipe["image"]} alt=""/>
-                {/* <a href={favRecipe["url"]} class="button" target="_blank" rel="noreferrer">Link to recipe</a> */}
                 <button type="button"
                 onClick={(e) => {
                 e.preventDefault();

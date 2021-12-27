@@ -14,8 +14,6 @@ import { useHistory } from "react-router-dom";
 import './App.css';
 
 const App = () => {
-  // const BASE_URL = "https://inspiration-board-tashforce.herokuapp.com";
-  // const BASE_URL = "http://localhost:5000"
   const BASE_URL = "https://backend2-easycook.herokuapp.com"
   const [users, setUsers] = useState([]);
   const [login, setLogin] = useState(false);
@@ -58,7 +56,6 @@ const App = () => {
         <Route path="/diet" exact component={DietPage}/>
         <Route path="/:id/favorites" component={(props) => <Favorites {...props} users={users}/>}/>
         <Route path="/:id/plans" component={(props) => <Plans {...props} users={users}/>}/>
-        {/* <Route path="/plans/:plan_id/recipes" exact component={PlanDetail}/> */}
         <Route path="/plans/:plan_id/recipes" exact component={(props) => <PlanDetail {...props} users={users}/>}/>
         <Route path="/:id/addrecipe/:recipe_id" exact component={(props) => <NewRecipeForm {...props} users={users}/>}/>
       </Switch>

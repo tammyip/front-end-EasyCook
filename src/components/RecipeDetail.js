@@ -5,14 +5,8 @@ import axios from 'axios';
 
 function RecipeDetail(props) {
 
-    // const routeChange = () => {
-    //     let path = `/?query=${match.search}`;
-    //     history.push(path);
-    // }
-  // console.log(props)
     useEffect(() => {
         fetchItem();
-        // console.log(match);
     }, []);
 
     const [recipes, setRecipes] = useState([]);
@@ -29,30 +23,20 @@ function RecipeDetail(props) {
             );
         const item = await fetchItem.json();
         setItem(item);
-        console.log(item);
     };
 
     if (item === null){
         return null;
     }
 
-    // const addToFavClick = ()  =>{
-    //     console.log(item)
-    //     props.addToFavorites(item.recipe);
-    //     console.log("added to db")
-    // }
-
     // Add a new recipe to Favorites
     const addToFavorites = (recipeFieldDict) =>{
       if (user_status){
-    // axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/${users.user_id}/favorites`, recipeFieldDict)
         axios.post(`https://backend2-easycook.herokuapp.com/user/${props.users[0].user_id}/favorites`, recipeFieldDict)
           .then((response) =>{
           const newrecipes = [...recipes];
-          console.log(newrecipes)
           newrecipes.push(response.data)
           setRecipes(newrecipes);
-          // console.log("added recipe to favorite")
           alert('🥑 Added to Favorite! 🥑')
         })
         .catch(() => {
@@ -71,15 +55,12 @@ function RecipeDetail(props) {
   } 
 
     const backPage= () =>{
-      // localStorage.getItem('cachedHits');
       history.goBack()
       fetchItem();
     }
 
     return (
         <div className="recipe-detail">
-            {/* <button onClick={history.goBack}>Back</button> */}
-            {/* <button onClick={backPage}>Back</button> */}
             <h1>{item.recipe.label}</h1>
             <img src={item.recipe.image} alt="" className="one-recipe"/>
             <p>Calories: {Math.round(item.recipe.calories)}</p>
@@ -94,7 +75,6 @@ function RecipeDetail(props) {
               <span><a href={item.recipe.url} target="_blank" rel="noreferrer" className="recipe_link">{item.recipe.url}</a></span>
             </p>
             <button onClick={() => addToFavorites(item.recipe)}>Add to Favorites</button>
-            {/* <button onClick={addToFavClick}>Add to Favorites</button> */}
             <button onClick={addToPlanRedirect}>Add to Plan</button>
             <div
             className="fb-share-button"

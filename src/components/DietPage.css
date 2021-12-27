@@ -4,11 +4,6 @@
     padding: 0;
   }
   
-  /* body {
-    font-family: "Roboto", sans-serif;
-    background-color: cornflowerblue;
-  } */
-  
   .App {
     display: flex;
     align-items: center;
@@ -32,7 +27,6 @@
   }
   
   button {
-    /* width: 100%; */
     padding: 0.5rem 1rem;
     background-color: #5487d8;
     color: #f3f3f3;
@@ -52,7 +46,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* max-width: 25em; */
   }
   
   h1 {
@@ -71,9 +64,7 @@
     margin: 0em auto;
     display: flex;
     max-width: calc(900px + 6rem);
-    /* align-items: center; */
     flex-wrap: wrap;
-    /* justify-content: center; */
   }
 
   .favMeals {
@@ -82,7 +73,6 @@
     max-width: calc(900px + 6rem);
     align-items: center;
     flex-wrap: wrap;
-    /* justify-content: center; */
   }
 
   .ingredients{
@@ -112,13 +102,10 @@
     margin: 0 1rem;
     max-width: 300px;
     box-shadow: 0 4px 20px 20px rgba(116, 18, 18, 0.15);
-    /* background-color: rgb(225, 224, 224); */
   }
   
   ul {
     list-style: none;
-    /* align-items: center;
-    justify-content: space-evenly; */
   }
   
   .instructions {
@@ -128,7 +115,6 @@
   
   a {
     text-decoration: none;
-    /* background-color: #7f21eb; */
     width: fit-content;
     font-size: 1em;
     color: darkorange;
@@ -154,13 +140,11 @@
     color: black;
     font-weight: bold;
     background-color: greenyellow;
-    /* background-color: rgb(235, 173, 149); */
   }
 
   .myplan {
     border: 5px solid darkred;
     border-style: dotted;
-    /* max-width: 30em; */
     margin: auto;
     width: 80%;
     padding: 10px;
@@ -175,11 +159,6 @@
   .recipe-detail{
     font-weight: bold;
   }
-  
-  /* a:hover {
-    background-color: #6c13d1;
-    cursor: pointer;
-  } */
   
   @media only screen and (max-width: 1024px) {
     .meals {

@@ -16,13 +16,9 @@ const Plans = ({users}) => {
         if (user_status){
         axios.get(`https://backend2-easycook.herokuapp.com/user/${users[0].user_id}/plans`)
           .then((response) => {
-              console.log("All my saved meal plans")
-              console.log(response.data)
               const allPlans = [...plans]
               allPlans.push(response.data)
               setPlans(response.data.plans);
-            //   setfavRecipes(response.data);
-              console.log(plans)
           })
           .catch(() => {
             setErrors("Fail to show saved meal plans");
@@ -36,9 +32,7 @@ const Plans = ({users}) => {
         .then((response) =>{
             const newplans = [...plans];
             newplans.push(response.data)
-            console.log(response.data)
             setPlans(newplans);
-            console.log("created a new plan")
         })
         .catch(() => {
             setErrors("Fail to create a new plan");
@@ -70,8 +64,6 @@ const Plans = ({users}) => {
                 <h3>🍤 MY PLANS 🍤</h3>
                 {plans.map(plan => (
                 <p>
-                {/* <Link to={`/plans/${plan.plan_id}/recipes`} className="btn btn-primary">{plan["plan_name"]}</Link> */}
-                {/* <Link to={`/plans/${plan.plan_id}/recipes`}>{plan["plan_name"]}</Link> */}
                  <a className="plan_link" href={`/plans/${plan.plan_id}/recipes`}>{plan["plan_name"]}</a>
                 </p>
                 ))}

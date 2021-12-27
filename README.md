@@ -1,77 +1,25 @@
 # Project Description
-This web application lets an user search for recipes and make a daily meal plan based on the user's target calories. After logging in with Facebook, an user can also save and remove a recipe to favorites. The user can also create meal plans for special occasions and add recipes to the plans. 
+This web application lets an user search for recipes and make a daily meal plan based on the user's daily target calorie intake. Once looged in on the app via Facebook, an user can share a recipe to Facebook, and can also save and remove a recipe to Favorites in the database. The user can also create meal plans for special occasions and add recipes to the plans. 
 
 ### Deployed version on AWS Amplify
 https://master.d245vfkxehebea.amplifyapp.com/
 
-# Getting Started with Create React App
+### Github Repo's
+Frontend: https://github.com/tammyip/front-end-EasyCook/tree/master
+Backend: https://github.com/tammyip/back-end-EasyCook/tree/main
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Setup
+Within Terminal/Git Bash:
 
-## Available Scripts
+1. From the main directory, type `npm i` to install node modules
+2. You can run `yarn start` to run the app in development mode. 
+3. Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits.
 
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Wireframe
+![Wireframe Page 1](https://user-images.githubusercontent.com/78624966/147423333-c702d038-b33d-4a26-8171-acfaa1afe565.png)
+![Wireframe Page 2](https://user-images.githubusercontent.com/78624966/147423342-cd135408-eae6-414b-b72f-2532ebbb8f61.png)
+![Wireframe Page 3](https://user-images.githubusercontent.com/78624966/147423346-9b612628-39c4-41dd-8c8d-2ef57c8feb46.png)
+![Wireframe Page 4](https://user-images.githubusercontent.com/78624966/147423350-63ad9f2a-3593-4790-9aef-76d95d6ddbff.png)
+![Wireframe Page 5](https://user-images.githubusercontent.com/78624966/147423490-9bd7b030-a9c6-4200-8582-81a53712ebbe.png)
+![Wireframe Page 6](https://user-images.githubusercontent.com/78624966/147423495-63464f7b-4bd3-4cb3-8279-27c04ae97614.png)
 

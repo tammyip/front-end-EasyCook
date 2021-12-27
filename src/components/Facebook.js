@@ -1,6 +1,4 @@
 import React, { useState, useCallback } from 'react';
-// import { Card } from 'react-bootstrap';
-// import FacebookLogin from 'react-facebook-login';
 import FacebookLoginWithButton from 'react-facebook-login';
 import { useHistory } from "react-router-dom";
 
@@ -10,16 +8,13 @@ const Facebook = (props) => {
     const [data, setData] = useState({});
   
     const responseFacebook = (response) => {
-      console.log(response);
       setData(response);
-      // setPicture(response.picture.data.url);
       if (response.accessToken) {
         setLogin(true);
         // Create a new user in database
         props.createNewUser(response);
         localStorage.setItem('logged in', 'True');
         const user_status = localStorage.getItem('logged in');
-        console.log(user_status)
       } else {
         setLogin(false);
       }
@@ -31,15 +26,11 @@ const Facebook = (props) => {
         setLogin(false);
         setData({});
         localStorage.removeItem('logged in');
-        // setPicture('');
-        // window.location.assign("https://localhost:3000");
         history.push('/');
     }
 
     const componentClicked = () => {
         console.log('clicked')
-        // console.log(data)
-        // props.createNewCard(data);
     };
 
     return(
@@ -56,9 +47,6 @@ const Facebook = (props) => {
                 icon="fa-facebook"
     />
             }
-            {/* { login &&
-              <Image src={picture} roundedCircle />
-            } */}
        
           { login &&
               <div className="fb-login">
