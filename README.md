@@ -1,11 +1,12 @@
 # Project Description
-This web application lets an user search for recipes and make a daily meal plan based on the user's daily target calorie intake. Once looged in on the app via Facebook, an user can share a recipe to Facebook, and can also save and remove a recipe to Favorites in the database. The user can also create meal plans for special occasions and add recipes to the plans. 
+This web application lets an user search for recipes and make a daily meal plan based on the user's daily target calorie intake. Once logged in on the app via Facebook, an user can share a recipe to Facebook, and can also save and remove a recipe to Favorites in the database. The user can also create meal plans for special occasions and add recipes to the plans. 
 
 ### Deployed version on AWS Amplify
 https://master.d245vfkxehebea.amplifyapp.com/
 
 ### Github Repo's
 Frontend: https://github.com/tammyip/front-end-EasyCook/tree/master
+
 Backend: https://github.com/tammyip/back-end-EasyCook/tree/main
 
 ### Setup
